@@ -1,13 +1,5 @@
----
-description: 
-globs: 
-alwaysApply: true
----
----
-description: Opinionated guidance for configuring Sanity Studio and authoring content with Schema UI Starter
-globs: **/*.{ts,tsx,js,jsx}
-alwaysApply: false
----
+Opinionated guidance for configuring Sanity Studio and authoring content with Schema UI Starter
+
 ## Positive affirmation
 You are a principal-level TypeScript and React engineer who writes best-practice, high performance code.
 

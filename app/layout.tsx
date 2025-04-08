@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import { Merriweather } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -10,8 +10,8 @@ const isProduction = process.env.NEXT_PUBLIC_SITE_ENV === "production";
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL!),
   title: {
-    template: "%s | Schema UI Starter",
-    default: "Sanity Next.js Website | Schema UI Starter",
+    template: "%s | Got Plate Lunch",
+    default: "Got Plate Lunch",
   },
   openGraph: {
     images: [
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
   robots: !isProduction ? "noindex, nofollow" : "index, follow",
 };
 
-const fontSans = FontSans({
+const merriweather = Merriweather({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["300", "400", "700", "900"],
   variable: "--font-sans",
 });
 
@@ -40,11 +40,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <meta name="apple-mobile-web-app-title" content="Got Plate Lunch" />
       <link rel="icon" href="/favicon.ico" />
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased overscroll-none",
-          fontSans.variable
+          merriweather.variable
         )}
       >
         <ThemeProvider

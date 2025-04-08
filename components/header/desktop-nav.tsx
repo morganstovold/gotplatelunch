@@ -3,7 +3,7 @@ import { NavItem } from "@/types";
 
 export default function DesktopNav({ navItems }: { navItems: NavItem[] }) {
   return (
-    <div className="hidden xl:flex items-center gap-7 text-primary">
+    <div className="hidden lg:flex items-center gap-7 text-primary">
       {navItems.map((navItem) => (
         <Link
           key={navItem.label}
