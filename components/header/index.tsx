@@ -30,11 +30,22 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    // Use a higher threshold to prevent triggering on small scrolls
+    const scrollThreshold = 30;
+    
+    // Add debounce to prevent rapid state changes
+    let timeoutId: NodeJS.Timeout | null = null;
+    
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 10;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
+      if (timeoutId) return; // Skip if we're in debounce period
+      
+      timeoutId = setTimeout(() => {
+        const isScrolled = window.scrollY > scrollThreshold;
+        if (isScrolled !== scrolled) {
+          setScrolled(isScrolled);
+        }
+        timeoutId = null;
+      }, 10); // Small timeout for smoother transitions
     };
 
     // Add scroll event listener
@@ -46,22 +57,23 @@ export default function Header() {
     // Cleanup
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      if (timeoutId) clearTimeout(timeoutId);
     };
   }, [scrolled]);
 
   return (
     <header
       className={cn(
-        "sticky top-0 w-full z-50 transition-all duration-200 ease-in-out",
-        scrolled
-          ? "shadow-md bg-background/95 border-b border-border/40 translate-y-0.5"
-          : "bg-background/90"
+        "sticky container top-0 w-full z-50 transition-all duration-300 ease-out py-4", // Increased duration and changed easing
+        scrolled ? "flex justify-center" : "bg-background/90"
       )}
     >
       <div
         className={cn(
-          "container flex items-center justify-between transition-all duration-200",
-          scrolled ? "h-12" : "h-16"
+          "flex items-center justify-between transition-all duration-300 ease-out w-full", // Increased duration and changed easing
+          scrolled
+            ? "rounded-full shadow-md bg-background/95 border border-border/40 max-w-screen-xl mx-auto px-4 py-2"
+            : "bg-background/90 py-2"
         )}
       >
         <Link
