@@ -59,7 +59,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t bg-muted/40">
-      <div className="container px-4 py-12 mx-auto">
+      <div className="container py-12 mx-auto">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Logo section - centered on mobile, left-aligned on desktop */}
           <div className="flex flex-col items-center lg:items-start space-y-4">

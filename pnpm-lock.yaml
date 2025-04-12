@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@fontsource-variable/maven-pro':
+        specifier: ^5.2.6
+        version: 5.2.6
       '@fontsource/merriweather':
         specifier: ^5.2.6
         version: 5.2.6
@@ -1202,6 +1205,9 @@ packages:
 
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
+
+  '@fontsource-variable/maven-pro@5.2.6':
+    resolution: {integrity: sha512-SxGQ6RW2HSopoeKJkkKof/gjpqcmd25k1s3/ppHGZPL90oiMn9zw2ekd+2JMt33azWmVgvYf53E9bm9MV42KFA==}
 
   '@fontsource/merriweather@5.2.6':
     resolution: {integrity: sha512-lPFH6+Kz3V7MK9SRDI/Y9hxMc+2Sjb/FjyNHlotRjL7eFRhJ8/LnnWsDTGAccTuoGEmfdaaia7SHw6LoNtoIyg==}
@@ -7616,6 +7622,8 @@ snapshots:
       react-dom: 19.0.0(react@19.0.0)
 
   '@floating-ui/utils@0.2.9': {}
+
+  '@fontsource-variable/maven-pro@5.2.6': {}
 
   '@fontsource/merriweather@5.2.6': {}
 

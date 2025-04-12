@@ -41,9 +41,9 @@
     transform: translateY(0);
   }
 }
-
+ 
 :root {
-  --background: hsl(0 0% 100%);
+  --background: hsl(52, 57%, 97%);
   --foreground: hsl(224 71.4% 4.1%);
   --card: hsl(0 0% 100%);
   --card-foreground: hsl(224 71.4% 4.1%);

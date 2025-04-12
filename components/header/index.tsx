@@ -15,14 +15,25 @@ const navItems = [
     target: false,
   },
   {
-    label: "Blog",
-    href: "/blog",
+    label: "About Us",
+    href: "/about",
     target: false,
   },
   {
-    label: "About",
+    label: "Food Trucks",
+    href: "food-trucks",
+    target: false,
+  },
+  {
+    label: "Catering",
+    href: "catering",
+    target: false
+  },
+  {
+    label: "Order Online",
     href: "/about",
     target: false,
+    variant: "primary"
   },
 ];
 
@@ -30,63 +41,62 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    // Use a higher threshold to prevent triggering on small scrolls
     const scrollThreshold = 30;
     
-    // Add debounce to prevent rapid state changes
-    let timeoutId: NodeJS.Timeout | null = null;
+    let rafId: number | null = null;
+    let lastKnownScrollY = window.scrollY;
     
     const handleScroll = () => {
-      if (timeoutId) return; // Skip if we're in debounce period
+      lastKnownScrollY = window.scrollY;
       
-      timeoutId = setTimeout(() => {
-        const isScrolled = window.scrollY > scrollThreshold;
+      if (rafId) return;
+      
+      rafId = requestAnimationFrame(() => {
+        const isScrolled = lastKnownScrollY > scrollThreshold;
         if (isScrolled !== scrolled) {
           setScrolled(isScrolled);
         }
-        timeoutId = null;
-      }, 10); // Small timeout for smoother transitions
+        rafId = null;
+      });
     };
 
-    // Add scroll event listener
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    // Check initial scroll position
     handleScroll();
 
-    // Cleanup
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      if (timeoutId) clearTimeout(timeoutId);
+      if (rafId) cancelAnimationFrame(rafId);
     };
   }, [scrolled]);
 
   return (
     <header
       className={cn(
-        "sticky container top-0 w-full z-50 transition-all duration-300 ease-out py-4", // Increased duration and changed easing
-        scrolled ? "flex justify-center" : "bg-background/90"
+        "sticky container top-0 w-full z-50 py-4", 
+        scrolled 
+          ? "flex justify-center transition-transform duration-200 ease-out" 
+          : "bg-background/90 transition-transform duration-150 ease-in"
       )}
     >
       <div
         className={cn(
-          "flex items-center justify-between transition-all duration-300 ease-out w-full", // Increased duration and changed easing
+          "flex items-center justify-between w-full py-4", 
           scrolled
-            ? "rounded-full shadow-md bg-background/95 border border-border/40 max-w-screen-xl mx-auto px-4 py-2"
-            : "bg-background/90 py-2"
+            ? "rounded-full shadow-md bg-background/95 border border-border/40 max-w-screen-xl mx-auto px-4 transition-all duration-200 ease-out will-change-transform"
+            : "bg-background/90 transition-all duration-150 ease-in will-change-transform"
         )}
       >
         <Link
           href="/"
           aria-label="Home page"
-          className="flex items-center shrink-0"
+          className="flex items-center shrink-0 px-2"
         >
           <Logo />
         </Link>
 
-        <div className="hidden lg:flex gap-6 items-center">
+        <div className="hidden lg:flex items-center gap-8">
           <DesktopNav navItems={navItems} />
-          <div className="border-l border-border/40 h-6 mx-2" />
           <ModeToggle />
         </div>
 

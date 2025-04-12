@@ -25,31 +25,10 @@ async function getPagesSitemap(): Promise<MetadataRoute.Sitemap[]> {
   return data;
 }
 
-async function getPostsSitemap(): Promise<MetadataRoute.Sitemap[]> {
-  const postsQuery = groq`
-    *[_type == 'post'] | order(_updatedAt desc) {
-      'url': $baseUrl + '/blog/' + slug.current,
-      'lastModified': _updatedAt,
-      'changeFrequency': 'weekly',
-      'priority': 0.7
-    }
-  `;
-
-  const { data } = await sanityFetch({
-    query: postsQuery,
-    params: {
-      baseUrl: process.env.NEXT_PUBLIC_SITE_URL,
-    },
-  });
-
-  return data;
-}
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap[]> {
-  const [pages, posts] = await Promise.all([
+  const [pages] = await Promise.all([
     getPagesSitemap(),
-    getPostsSitemap(),
   ]);
 
-  return [...pages, ...posts];
+  return [...pages];
 }

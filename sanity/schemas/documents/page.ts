@@ -51,7 +51,6 @@ export default defineType({
         { type: "logo-cloud-1" },
         { type: "faqs" },
         { type: "form-newsletter" },
-        { type: "all-posts" },
       ],
       options: {
         insertMenu: {
@@ -105,11 +104,6 @@ export default defineType({
               name: "forms",
               title: "Forms",
               of: ["form-newsletter"],
-            },
-            {
-              name: "all-posts",
-              title: "All Posts",
-              of: ["all-posts"],
             },
           ],
           views: [

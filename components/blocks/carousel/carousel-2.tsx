@@ -14,6 +14,7 @@ import { urlFor } from "@/sanity/lib/image";
 import { StarRating } from "@/components/ui/star-rating";
 import PortableTextRenderer from "@/components/portable-text-renderer";
 import { PAGE_QUERYResult } from "@/sanity.types";
+import { useMemo } from "react";
 
 type Carousel2Props = Extract<
   NonNullable<NonNullable<PAGE_QUERYResult>["blocks"]>[number],
@@ -37,15 +38,19 @@ export default function Carousel2({
                 key={item._id}
                 className="pl-2 md:pl-4 md:basis-1/3"
               >
-                <Card className="h-full">
+                <Card className="h-full will-change-transform">
                   <CardContent className="flex flex-col justify-between p-4 h-full">
                     <div>
                       <div className="flex items-center mb-2">
                         <Avatar className="w-10 h-10 mr-3">
                           {item.image && (
                             <AvatarImage
-                              src={urlFor(item.image).url()}
+                              src={urlFor(item.image)
+                                .width(80)
+                                .height(80)
+                                .url()}
                               alt={item.name ?? ""}
+                              loading="lazy"
                             />
                           )}
                           <AvatarFallback>

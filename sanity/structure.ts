@@ -12,28 +12,6 @@ export const structure = (S: any, context: any) =>
         S,
         context,
       }),
-      S.listItem()
-        .title("Posts")
-        .schemaType("post")
-        .child(
-          S.documentTypeList("post")
-            .title("Post")
-            .defaultOrdering([{ field: "_createdAt", direction: "desc" }]) // Default ordering
-        ),
-      orderableDocumentListDeskItem({
-        type: "category",
-        title: "Categories",
-        icon: BookA,
-        S,
-        context,
-      }),
-      orderableDocumentListDeskItem({
-        type: "author",
-        title: "Authors",
-        icon: User,
-        S,
-        context,
-      }),
       orderableDocumentListDeskItem({
         type: "faq",
         title: "FAQs",

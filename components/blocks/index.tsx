@@ -11,7 +11,6 @@ import Cta1 from "@/components/blocks/cta/cta-1";
 import LogoCloud1 from "@/components/blocks/logo-cloud/logo-cloud-1";
 import FAQs from "@/components/blocks/faqs";
 import FormNewsletter from "@/components/blocks/forms/newsletter";
-import AllPosts from "@/components/blocks/all-posts";
 
 type Block = NonNullable<NonNullable<PAGE_QUERYResult>["blocks"]>[number];
 
@@ -30,7 +29,6 @@ const componentMap: {
   "logo-cloud-1": LogoCloud1,
   faqs: FAQs,
   "form-newsletter": FormNewsletter,
-  "all-posts": AllPosts,
 };
 
 export default function Blocks({ blocks }: { blocks: Block[] }) {
