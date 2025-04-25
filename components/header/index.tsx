@@ -1,63 +1,66 @@
 "use client";
 
-import Link from "next/link";
-import Logo from "@/components/logo";
-import MobileNav from "@/components/header/mobile-nav";
-import DesktopNav from "@/components/header/desktop-nav";
-import { ModeToggle } from "@/components/menu-toggle";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
+import Logo from "@/components/logo";
+import MobileNav from "./mobile-nav";
+import DesktopNav from "./desktop-nav";
+import Link from "next/link";
 
-const navItems = [
+export const navItems = [
   {
     label: "Home",
     href: "/",
     target: false,
   },
   {
-    label: "About Us",
+    label: "About",
     href: "/about",
     target: false,
   },
   {
-    label: "Food Trucks",
-    href: "food-trucks",
+    label: "Food Truck",
+    href: "/food-truck",
     target: false,
   },
   {
     label: "Catering",
-    href: "catering",
-    target: false
+    href: "/catering",
+    target: false,
   },
   {
-    label: "Order Online",
-    href: "/about",
+    label: "Order",
+    href: "/order-now",
     target: false,
-    variant: "primary"
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+    target: false,
   },
 ];
 
-export default function Header() {
+export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const { scrollY } = useScroll();
+  const headerOpacity = useTransform(scrollY, [0, 50], [1, 0.98]);
 
   useEffect(() => {
-    const scrollThreshold = 30;
-    
-    let rafId: number | null = null;
-    let lastKnownScrollY = window.scrollY;
-    
+    const scrollThreshold = 10;
+
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+
     const handleScroll = () => {
-      lastKnownScrollY = window.scrollY;
-      
-      if (rafId) return;
-      
-      rafId = requestAnimationFrame(() => {
-        const isScrolled = lastKnownScrollY > scrollThreshold;
+      if (timeoutId) return;
+
+      timeoutId = setTimeout(() => {
+        const isScrolled = window.scrollY > scrollThreshold;
         if (isScrolled !== scrolled) {
           setScrolled(isScrolled);
         }
-        rafId = null;
-      });
+        timeoutId = null;
+      }, 10);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -66,45 +69,46 @@ export default function Header() {
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      if (rafId) cancelAnimationFrame(rafId);
+      if (timeoutId) clearTimeout(timeoutId);
     };
   }, [scrolled]);
 
   return (
-    <header
+    <motion.header
+      style={{ opacity: headerOpacity }}
       className={cn(
-        "sticky container top-0 w-full z-50 py-4", 
-        scrolled 
-          ? "flex justify-center transition-transform duration-200 ease-out" 
-          : "bg-background/90 transition-transform duration-150 ease-in"
+        "sticky top-0 w-full z-50 py-4",
+        scrolled
+          ? "flex justify-center transition-transform duration-200 ease-out"
+          : "transition-transform duration-100 ease-in"
       )}
     >
-      <div
+      <motion.div
         className={cn(
-          "flex items-center justify-between w-full py-4", 
+          "flex items-center justify-between w-full py-4 border-2 rounded-full mx-auto container",
           scrolled
-            ? "rounded-full shadow-md bg-background/95 border border-border/40 max-w-screen-xl mx-auto px-4 transition-all duration-200 ease-out will-change-transform"
-            : "bg-background/90 transition-all duration-150 ease-in will-change-transform"
+            ? "shadow-md bg-background/95 mx-auto px-4 transition-all duration-200 ease-out will-change-transform"
+            : "transition-all duration-100 ease-in will-change-transform border-transparent"
         )}
       >
-        <Link
-          href="/"
-          aria-label="Home page"
-          className="flex items-center shrink-0 px-2"
-        >
-          <Logo />
-        </Link>
+        <motion.div transition={{ duration: 0.2 }}>
+          <Link
+            href="/"
+            aria-label="Home page"
+            className="flex items-center shrink-0 px-2"
+          >
+            <Logo />
+          </Link>
+        </motion.div>
 
         <div className="hidden lg:flex items-center gap-8">
           <DesktopNav navItems={navItems} />
-          <ModeToggle />
         </div>
 
         <div className="flex items-center lg:hidden">
-          <ModeToggle />
           <MobileNav navItems={navItems} />
         </div>
-      </div>
-    </header>
+      </motion.div>
+    </motion.header>
   );
 }

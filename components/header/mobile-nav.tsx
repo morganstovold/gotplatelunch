@@ -1,64 +1,69 @@
-"use client";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { MenuIcon } from "lucide-react";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { NavItem } from "@/types";
-import Logo from "@/components/logo";
-import { useState } from "react";
-import { AlignRight } from "lucide-react";
 
-export default function MobileNav({ navItems }: { navItems: NavItem[] }) {
+interface NavItem {
+  label: string;
+  href: string;
+  target: boolean;
+}
+
+interface MobileNavProps {
+  navItems: NavItem[];
+}
+
+export default function MobileNav({ navItems }: MobileNavProps) {
   const [open, setOpen] = useState(false);
+
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger asChild>
-        <Button
-          aria-label="Open Menu"
-          variant="ghost"
-          className="w-10 p-5 focus-visible:ring-1 focus-visible:ring-offset-1"
+    <div className="ml-2">
+      <Sheet open={open} onOpenChange={setOpen}>
+        <SheetTrigger asChild>
+          <motion.button
+            className="p-2 rounded-md hover:bg-accent/50 transition-colors relative group"
+            aria-label="Open menu"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <MenuIcon className="w-6 h-6 text-foreground transition-colors" />
+          </motion.button>
+        </SheetTrigger>
+        <SheetContent
+          side="right"
+          className="border-l bg-background/95 backdrop-blur-lg"
         >
-          <AlignRight className="dark:text-white" />
-        </Button>
-      </SheetTrigger>
-      <SheetContent>
-        <SheetHeader>
-          <div className="mx-auto">
-            <Logo />
-          </div>
-          <div className="sr-only">
-            <SheetTitle>Main Navigation</SheetTitle>
-            <SheetDescription>Navigate to the website pages</SheetDescription>
-          </div>
-        </SheetHeader>
-        <div className="pt-10 pb-20">
-          <div className="container">
-            <ul className="list-none text-center space-y-3">
-              <>
-                {navItems.map((navItem) => (
-                  <li key={navItem.label}>
-                    <Link
-                      onClick={() => setOpen(false)}
-                      href={navItem.href}
-                      target={navItem.target ? "_blank" : undefined}
-                      rel={navItem.target ? "noopener noreferrer" : undefined}
-                      className="hover:text-decoration-none hover:opacity-50 text-lg"
-                    >
-                      {navItem.label}
-                    </Link>
-                  </li>
-                ))}
-              </>
-            </ul>
-          </div>
-        </div>
-      </SheetContent>
-    </Sheet>
+          <SheetHeader className="border-b">
+            <SheetTitle className="text-xl">Menu</SheetTitle>
+          </SheetHeader>
+          <nav className="flex flex-col gap-1 px-4">
+            {navItems.map((item, index) => (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.05 + 0.1 }}
+              >
+                <Link
+                  href={item.href}
+                  target={item.target ? "_blank" : undefined}
+                  onClick={() => setOpen(false)}
+                  className="block px-4 py-3 rounded-lg hover:bg-accent/30 transition-colors font-medium relative group"
+                >
+                  {item.label}
+                </Link>
+              </motion.div>
+            ))}
+          </nav>
+        </SheetContent>
+      </Sheet>
+    </div>
   );
 }

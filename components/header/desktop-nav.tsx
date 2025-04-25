@@ -1,32 +1,40 @@
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
-import { NavItem } from "@/types";
 
-export default function DesktopNav({ navItems }: { navItems: NavItem[] }) {
-  const pathname = usePathname();
+interface NavItem {
+  label: string;
+  href: string;
+  target: boolean;
+}
 
+interface DesktopNavProps {
+  navItems: NavItem[];
+}
+
+export default function DesktopNav({ navItems }: DesktopNavProps) {
   return (
-    <nav className="flex items-center gap-6">
-      {navItems.map((item) => {
-        const isActive = pathname === item.href;
-        return (
+    <nav className="flex items-center">
+      {navItems.map((item, index) => (
+        <motion.div
+          key={item.label}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.05 }}
+          className="mr-6"
+        >
           <Link
-            key={item.label}
             href={item.href}
             target={item.target ? "_blank" : undefined}
-            className={cn(
-              "relative px-2 py-1.5 text-base font-medium transition-colors",
-              "hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-              isActive 
-                ? "text-primary font-semibold after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary after:content-['']" 
-                : "text-foreground/80 hover:text-foreground"
-            )}
+            className="relative px-2 py-1 text-foreground hover:text-foreground transition-colors group"
           >
             {item.label}
+            <motion.span
+              className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#F0B222] transition-all duration-300 nav-glow"
+              layoutId={`underline-${item.label}`}
+            />
           </Link>
-        );
-      })}
+        </motion.div>
+      ))}
     </nav>
   );
 }
