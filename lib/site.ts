@@ -7,7 +7,8 @@ import UltimateLocoMoco from "@/public/ultimate-loco-moto.jpg";
 import SteakGravy from "@/public/steak-gravy.jpg";
 import BBQChicken from "@/public/bbq-chicken.jpg";
 import SpicyBBQChicken from "@/public/bbq-chicken.jpg";
-import PlaceholderImage from "@/public/placeholder.jpg";
+// import PlaceholderImage from "@/public/placeholder.jpg";
+import PlaceholderImage from "@/public/bbq-chicken.jpg";
 
 export const siteConfig = {
   menuItems: [
