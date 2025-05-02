@@ -30,10 +30,10 @@ export function BusinessInfo() {
 
   return (
     <section className="w-full py-12 sm:py-16 md:py-20 overflow-hidden relative">
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto relative z-10">
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
           <motion.div
-            className="w-full md:w-1/2"
+            className="w-full md:w-1/2 order-2 md:order-1"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -42,7 +42,7 @@ export function BusinessInfo() {
             <div className="max-w-lg mx-auto md:mx-0 space-y-5 sm:space-y-6">
               <motion.h2
                 variants={itemVariants}
-                className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 relative inline-block"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 relative inline-block"
               >
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-teal-400 to-cyan-500">
                   Our Journey
@@ -91,39 +91,39 @@ export function BusinessInfo() {
 
               <motion.div
                 variants={itemVariants}
-                className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 shadow-xl"
+                className="bg-background backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/10 shadow-xl"
               >
-                <h3 className="text-lg sm:text-xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-orange-500">
+                <h3 className="text-lg sm:text-xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400">
                   Hours of Operation
                 </h3>
                 <ul className="space-y-3">
-                  <li className="flex justify-between items-center border-b border-white/10 pb-2">
-                    <span className="font-medium">Monday - Thursday</span>
-                    <span className="bg-amber-400/10 px-3 py-1 rounded-full text-amber-500 font-medium">
+                  <li className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-white/10 pb-2">
+                    <span className="font-medium mb-1 sm:mb-0">Monday - Thursday</span>
+                    <span className="bg-red-400/10 px-3 py-1 rounded-full text-red-500 font-medium text-sm sm:text-base w-fit">
                       11AM - 8PM
                     </span>
                   </li>
-                  <li className="flex justify-between items-center border-b border-white/10 pb-2">
-                    <span className="font-medium">Friday - Saturday</span>
-                    <span className="bg-amber-400/10 px-3 py-1 rounded-full text-amber-500 font-medium">
+                  <li className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-white/10 pb-2">
+                    <span className="font-medium mb-1 sm:mb-0">Friday - Saturday</span>
+                    <span className="bg-red-400/10 px-3 py-1 rounded-full text-red-500 font-medium text-sm sm:text-base w-fit">
                       11AM - 9PM
                     </span>
                   </li>
-                  <li className="flex justify-between items-center">
-                    <span className="font-medium">Sunday</span>
-                    <span className="bg-amber-400/10 px-3 py-1 rounded-full text-amber-500 font-medium">
+                  <li className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+                    <span className="font-medium mb-1 sm:mb-0">Sunday</span>
+                    <span className="bg-red-400/10 px-3 py-1 rounded-full text-red-500 font-medium text-sm sm:text-base w-fit">
                       12PM - 7PM
                     </span>
                   </li>
                 </ul>
               </motion.div>
 
-              <motion.div variants={itemVariants} className="flex gap-4">
+              <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
                 <Link
                   href="/contact"
                   className={buttonVariants({
                     size: "lg",
-                    variant: "yellow",
+                    variant: "brand",
                   })}
                 >
                   View Locations
@@ -132,7 +132,7 @@ export function BusinessInfo() {
                   href="/food-truck"
                   className={buttonVariants({
                     size: "lg",
-                    variant: "yellow",
+                    variant: "brand",
                   })}
                 >
                   Food Truck
@@ -142,7 +142,7 @@ export function BusinessInfo() {
           </motion.div>
 
           <motion.div
-            className="w-full md:w-1/2 mt-8 md:mt-0"
+            className="w-full md:w-1/2 order-1 md:order-2 mb-8 md:mb-0"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
@@ -164,13 +164,13 @@ export function BusinessInfo() {
 
               {/* Since 2011 badge */}
               <motion.div
-                className="absolute bottom-4 right-4 z-20 bg-gradient-to-r from-amber-500 to-orange-500 p-4 rounded-xl shadow-xl"
+                className="absolute bottom-4 right-4 z-20 bg-gradient-to-r from-red-500 to-orange-500 p-2 sm:p-4 rounded-xl shadow-xl"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.6, type: "spring" }}
                 viewport={{ once: true }}
               >
-                <p className="text-white font-bold text-lg sm:text-xl">
+                <p className="text-white font-bold text-base sm:text-lg md:text-xl">
                   Since 2011
                 </p>
                 <p className="text-white/80 text-xs sm:text-sm">

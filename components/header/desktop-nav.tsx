@@ -25,11 +25,11 @@ export default function DesktopNav({ navItems }: DesktopNavProps) {
           <Link
             href={item.href}
             target={item.target ? "_blank" : undefined}
-            className="relative px-2 py-1 text-foreground hover:text-foreground transition-colors group"
+            className="relative px-2 py-1 transition-colors group bg-clip-text text-transparent bg-gradient-to-r from-black to-black hover:from-red-400 hover:to-orange-400"
           >
             {item.label}
             <motion.span
-              className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#F0B222] transition-all duration-300"
+              className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-400 to-orange-400 transition-all duration-300 group-hover:w-full"
               layoutId={`underline-${item.label}`}
             />
           </Link>

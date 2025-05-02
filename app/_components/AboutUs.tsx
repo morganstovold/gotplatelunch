@@ -28,31 +28,31 @@ export function AboutUs() {
   };
 
   return (
-    <section className="w-full py-4 md:py-24 relative overflow-hidden">
+    <section className="w-full py-12 md:py-16 lg:py-24 relative overflow-hidden">
       <div className="container mx-auto">
-        <div className="grid md:grid-cols-2 gap-18 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-18 items-center">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="space-y-4"
+            className="space-y-4 order-2 md:order-1"
           >
-            <motion.h2
-              variants={itemVariants}
-              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-8 relative inline-block"
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400 mb-4 sm:mb-6 relative inline-block pb-2"
             >
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-pink-500 to-purple-600">
-                Our Story
-              </span>
+              Our Story
               <motion.span
-                className="absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-orange-400 via-pink-500 to-purple-600 rounded-full"
+                className="absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-red-400 to-orange-400 rounded-full"
                 initial={{ width: "0%" }}
-                whileInView={{ width: "100%" }}
+                whileInView={{ width: "48px" }}
                 transition={{ duration: 1, delay: 0.5 }}
-              viewport={{ once: true }}
+                viewport={{ once: true }}
               />
-            </motion.h2>
+            </motion.h1>
 
             <motion.p
               variants={itemVariants}
@@ -93,16 +93,16 @@ export function AboutUs() {
               .
             </motion.p>
 
-            <motion.div variants={itemVariants}>
+            <motion.div variants={itemVariants} className="pt-2">
               <Link
                 href="/about"
-                className={buttonVariants({ variant: "yellow", size: "lg" })}
+                className={buttonVariants({ variant: "brand", size: "lg" })}
               >
                 Learn More About Us
               </Link>
             </motion.div>
           </motion.div>
-          <motion.div className="relative mx-auto max-w-md md:max-w-full">
+          <motion.div className="relative mx-auto max-w-md md:max-w-full order-1 md:order-2 mb-8 md:mb-0">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}

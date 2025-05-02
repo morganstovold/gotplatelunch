@@ -37,29 +37,29 @@ export function FoodShowcase() {
   };
 
   return (
-    <section className="w-full py-16 relative overflow-hidden">
+    <section className="w-full py-10 sm:py-12 md:py-16 relative overflow-hidden">
       <div className="container mx-auto relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="text-center mb-8 sm:mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
           <motion.h2
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 relative inline-block"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 relative inline-block"
           >
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-teal-400 to-emerald-500">
               Island Flavors
             </span>
             <motion.span
-              className="absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-blue-500 via-teal-400 to-emerald-500 rounded-full"
-              initial={{ width: "0%" }}
-              whileInView={{ width: "100%" }}
-              transition={{ duration: 1, delay: 0.5 }}
-              viewport={{ once: true }}
-            />
+                className="absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-blue-500 via-teal-400 to-emerald-500 rounded-full"
+                initial={{ width: "0%" }}
+                whileInView={{ width: "48px" }}
+                transition={{ duration: 1, delay: 0.5 }}
+                viewport={{ once: true }}
+              />
           </motion.h2>
           <motion.p
             variants={itemVariants}
@@ -78,7 +78,7 @@ export function FoodShowcase() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
         >
           {siteConfig.foodItems.map((item, index) => (
             <motion.div
@@ -86,14 +86,14 @@ export function FoodShowcase() {
               variants={itemVariants}
               whileHover="hover"
               initial="rest"
-              animate="rest"
+              whileInView="rest"
               className="relative bg-white rounded-xl overflow-hidden shadow-xl group"
             >
               <motion.div
                 variants={cardHoverVariants}
                 className="h-full w-full"
               >
-                <div className="h-48 sm:h-56 overflow-hidden relative">
+                <div className="h-40 sm:h-48 md:h-56 overflow-hidden relative">
                   <Image
                     src={item.image}
                     alt={item.name}
@@ -101,7 +101,7 @@ export function FoodShowcase() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <div className="p-4 sm:p-6 relative">
+                <div className="p-3 sm:p-4 md:p-6 relative">
                   <h3 className="text-lg sm:text-xl font-bold mb-2 group-hover:text-amber-600 transition-colors duration-300">
                     {item.name}
                   </h3>
@@ -119,14 +119,14 @@ export function FoodShowcase() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="text-center mt-10 sm:mt-16"
+          className="text-center mt-8 sm:mt-10 md:mt-16"
         >
           <motion.div variants={itemVariants}>
             <Link
               href="/menu"
               className={buttonVariants({
                 size: "lg",
-                variant: "yellow",
+                variant: "brand",
               })}
             >
               View Full Menu
