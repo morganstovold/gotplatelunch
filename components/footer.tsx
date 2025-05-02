@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-  import { motion } from "motion/react";
+import { motion } from "motion/react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -26,6 +26,7 @@ export function Footer() {
 
   return (
     <footer className="relative w-full overflow-hidden">
+      {/* Wave divider at the top */}
       <div className="relative w-full">
         <svg
           className="w-full h-auto"
@@ -144,7 +145,13 @@ export function Footer() {
   );
 }
 
-function FooterLink({ href, children }) {
+function FooterLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
   return (
     <li>
       <Link
@@ -158,7 +165,7 @@ function FooterLink({ href, children }) {
   );
 }
 
-function renderSocialIcon(icon) {
+function renderSocialIcon(icon: string) {
   switch (icon) {
     case "instagram":
       return (
