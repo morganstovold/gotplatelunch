@@ -685,20 +685,20 @@ export const siteConfig = {
   testimonials: [
     {
       quote:
-        "Best Hawaiian food I've had since visiting the islands! The Loco Moco is just like back home.",
-      author: "Mike K.",
-      location: "San Francisco, CA",
+        "Amazing food, the best Hawaiian food I have ever had! Also, the location is in such a beautiful area!",
+      author: "Patty J.",
+      location: "Benicia, CA",
     },
     {
       quote:
-        "The food truck is amazing! I follow them everywhere. Their SPAM Musubi is worth the drive!",
-      author: "Sarah L.",
-      location: "Oakland, CA",
+        "Great food, friendly service, incredible view, & island tunes. What more could you want?",
+      author: "D L.",
+      location: "Benicia, CA",
     },
     {
       quote:
-        "Authentic Hawaiian flavors with the friendliest service. Uncle Myk and Aunty Jamie make you feel like family.",
-      author: "David T.",
+        "My fav restaurant in town. They're back and better than ever -- love their new 9th St location.",
+      author: "Mark C.",
       location: "Benicia, CA",
     },
   ],
