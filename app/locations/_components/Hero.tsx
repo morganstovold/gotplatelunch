@@ -2,8 +2,6 @@
 
 import { motion } from "motion/react";
 import Image from "next/image";
-import { buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
 import heroBg from "@/public/hero-bg.jpg";
 
 export function LocationsHero() {
@@ -43,25 +41,6 @@ export function LocationsHero() {
         >
           Find a Got Plate Lunch location near you!
         </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex gap-4"
-        >
-          <Link
-            className={buttonVariants({ variant: "brand", size: "lg" })}
-            href="#locations"
-          >
-            View Locations
-          </Link>
-          <Link
-            className={buttonVariants({ variant: "soft", size: "lg" })}
-            href="/menu"
-          >
-            Our Menu
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

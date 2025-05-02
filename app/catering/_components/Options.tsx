@@ -92,7 +92,7 @@ const cateringOptions = [
 export function CateringOptions() {
   return (
     <section className="w-full py-12 md:py-16 lg:py-24">
-      <div className="container mx-auto px-4">
+      <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

@@ -7,7 +7,7 @@ import Link from "next/link";
 export function CateringContact() {
   return (
     <section className="relative w-full py-12 md:py-16 lg:py-24">
-      <div className="container mx-auto px-4">
+      <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

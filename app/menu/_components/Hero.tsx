@@ -2,8 +2,6 @@
 
 import { motion } from "motion/react";
 import Image from "next/image";
-import { buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
 import heroBg from "@/public/hero-bg.jpg";
 
 export function MenuHero() {
@@ -19,7 +17,7 @@ export function MenuHero() {
         <div className="absolute inset-0 bg-black/60"></div>
       </div>
 
-      <div className="container relative z-10 flex flex-col items-center text-center px-4 sm:px-6">
+      <div className="container relative z-10 flex flex-col items-center text-center">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -43,25 +41,6 @@ export function MenuHero() {
         >
           Authentic Hawaiian flavors made with Aloha
         </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex gap-4"
-        >
-          <Link
-            className={buttonVariants({ variant: "brand", size: "lg" })}
-            href="/locations"
-          >
-            Order Now
-          </Link>
-          <Link
-            className={buttonVariants({ variant: "soft", size: "lg" })}
-            href="#menu"
-          >
-            View Menu
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

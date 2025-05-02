@@ -88,7 +88,7 @@ export function Header() {
           className={cn(
             "flex items-center justify-between w-full py-4 border-2 rounded-xl",
             scrolled
-              ? "shadow-md bg-background/95 mx-auto px-4 transition-all duration-200 ease-out will-change-transform"
+              ? "shadow-md bg-background/95 transition-all duration-200 ease-out will-change-transform"
               : "transition-all duration-100 ease-in will-change-transform border-transparent"
           )}
         >
