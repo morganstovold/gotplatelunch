@@ -36,6 +36,9 @@ export function FoodShowcase() {
     },
   };
 
+  // Filter to show only featured items on the homepage
+  const featuredItems = siteConfig.menuItems.filter(item => item.isFeatured);
+
   return (
     <section className="w-full py-10 sm:py-12 md:py-16 relative overflow-hidden">
       <div className="container mx-auto relative z-10">
@@ -80,9 +83,9 @@ export function FoodShowcase() {
           viewport={{ once: true }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
         >
-          {siteConfig.foodItems.map((item, index) => (
+          {featuredItems.map((item, index) => (
             <motion.div
-              key={index}
+              key={item.id}
               variants={itemVariants}
               whileHover="hover"
               initial="rest"
@@ -93,18 +96,22 @@ export function FoodShowcase() {
                 variants={cardHoverVariants}
                 className="h-full w-full"
               >
-                <div className="h-40 sm:h-48 md:h-56 overflow-hidden relative">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-100"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
+                <Link href={`/menu/${item.id}`} className="block">
+                  <div className="h-40 sm:h-48 md:h-56 overflow-hidden relative">
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-100"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                </Link>
                 <div className="p-3 sm:p-4 md:p-6 relative">
-                  <h3 className="text-lg sm:text-xl font-bold mb-2 group-hover:text-amber-600 transition-colors duration-300">
-                    {item.name}
-                  </h3>
+                  <Link href={`/menu/${item.id}`} className="block">
+                    <h3 className="text-lg sm:text-xl font-bold mb-2 group-hover:text-amber-600 transition-colors duration-300">
+                      {item.name}
+                    </h3>
+                  </Link>
                   <p className="text-sm sm:text-base text-gray-600">
                     {item.description}
                   </p>
