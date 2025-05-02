@@ -178,7 +178,7 @@ export const siteConfig = {
       price: "19.99",
       image: PlaceholderImage,
       categoryId: "locals-favorites",
-      isFeatured: true,
+      isFeatured: false,
       ingredients: [
         "BBQ Chicken",
         "Grilled SPAM",
@@ -197,7 +197,7 @@ export const siteConfig = {
       price: "35.99",
       image: PlaceholderImage,
       categoryId: "locals-favorites",
-      isFeatured: true,
+      isFeatured: false,
       ingredients: [
         "Hamburger Steak with gravy",
         "BBQ Chicken",
@@ -308,7 +308,7 @@ export const siteConfig = {
       price: "9.99",
       image: PlaceholderImage,
       categoryId: "pupus-appetizers",
-      isFeatured: true,
+      isFeatured: false,
       ingredients: [
         "Tater tots",
         "Kalua pork",
@@ -343,7 +343,7 @@ export const siteConfig = {
       price: "16.99",
       image: PlaceholderImage,
       categoryId: "island-favorites",
-      isFeatured: true,
+      isFeatured: false,
       dietaryInfo: ["Contains Eggs"],
       ingredients: [
         "Portuguese sausage",
