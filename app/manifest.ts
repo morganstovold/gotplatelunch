@@ -7,8 +7,6 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Authentic Hawaiian Cuisine',
     start_url: '/',
     display: 'standalone',
-    background_color: '#FDFAF5',
-    theme_color: '#f43f5e',
     icons: [
       {
         src: '/favicon',
