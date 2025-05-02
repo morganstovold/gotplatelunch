@@ -1,9 +1,6 @@
 import { ImageResponse } from 'next/og';
 import { siteConfig } from '@/lib/site';
 
-// Route segment config
-export const runtime = 'edge';
-
 // Image metadata
 export const size = {
   width: 1200,
@@ -12,8 +9,8 @@ export const size = {
 export const contentType = 'image/png';
 
 // Generate alt text for each menu item
-export async function generateImageMetadata({ params }: { params: Promise<{ id: string }> }) {
-  const id = (await params).id;
+export async function generateImageMetadata({ params }: { params: { id: string } }) {
+  const id = params.id;
   const menuItem = siteConfig.menuItems.find(item => item.id === id);
   
   if (!menuItem) {
@@ -28,8 +25,8 @@ export async function generateImageMetadata({ params }: { params: Promise<{ id: 
 }
 
 // Image generation
-export default async function Image({ params }: { params: Promise<{ id: string }> }) {
-  const id = (await params).id;
+export default async function Image({ params }: { params: { id: string } }) {
+  const id = params.id;
   const menuItem = siteConfig.menuItems.find(item => item.id === id) || {
     name: "Menu Item",
     description: "Authentic Hawaiian Cuisine",

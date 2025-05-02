@@ -9,13 +9,13 @@ import seamlessBg from "@/public/palm-pattern.jpg";
 import { notFound } from "next/navigation";
 import { siteConfig } from "@/lib/site";
 
-// Generate metadata for each menu item - needs to be async
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-  const menuItem = siteConfig.menuItems.find((item) => item.id === params.id);
+  const id = (await params).id
+  const menuItem = siteConfig.menuItems.find((item) => item.id === id);
 
   if (!menuItem) {
     return {
@@ -64,7 +64,7 @@ export default async function MenuItemPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
-  // Now we can safely use params.id in an async function
+  // Now we can safely use id in an async function
   const id = (await params).id;
   const menuItem = siteConfig.menuItems.find((item) => item.id === id);
 

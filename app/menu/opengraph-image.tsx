@@ -1,9 +1,6 @@
 import { ImageResponse } from 'next/og';
 import { siteConfig } from '@/lib/site';
 
-// Route segment config
-export const runtime = 'edge';
-
 // Image metadata
 export const alt = 'Menu - Got Plate Lunch - Authentic Hawaiian Cuisine';
 export const size = {
