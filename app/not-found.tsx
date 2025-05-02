@@ -33,7 +33,7 @@ export default function NotFound() {
         </h2>
         
         <p className="text-xl text-gray-700 mb-12 max-w-2xl">
-          Looks like this dish isn't on our menu! The page you're looking for has been removed, 
+          Looks like this dish isn&apos;t on our menu! The page you&apos;re looking for has been removed, 
           renamed, or is temporarily unavailable.
         </p>
         

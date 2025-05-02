@@ -2,8 +2,6 @@ import LocoMoco from "@/public/loco-moco.jpg";
 import SpamMusubi from "@/public/spam-musubi.jpg";
 import KaluaPork from "@/public/kalua-pork.jpg";
 import ChickenKatsu from "@/public/chicken-katsu.jpg";
-import PokeBowl from "@/public/poke-bowl.jpg";
-import BbqChicken from "@/public/bbq-chicken.jpg";
 import SpamFriedRice from "@/public/placeholder.jpg";
 import AcaiBowl from "@/public/poke-bowl.jpg";
 import GarlicShrimp from "@/public/placeholder.jpg";

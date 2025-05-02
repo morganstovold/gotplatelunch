@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Footer } from "@/components/footer";
 import { CallToAction } from "@/app/_components/CallToAction";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
