@@ -58,7 +58,7 @@ export function Locations() {
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-12 md:mb-16"
@@ -70,7 +70,7 @@ export function Locations() {
             <motion.span
               className="absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-full"
               initial={{ width: "0%" }}
-              whileInView={{ width: "100%" }}
+              animate={{ width: "100%" }}
               transition={{ duration: 1, delay: 0.5 }}
               viewport={{ once: true }}
             />
@@ -83,7 +83,7 @@ export function Locations() {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12"
         >

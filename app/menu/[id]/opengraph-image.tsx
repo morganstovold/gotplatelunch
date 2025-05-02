@@ -20,8 +20,12 @@ export async function generateImageMetadata({ params }: { params: { id: string }
     }];
   }
   
+  // Get category name from categoryId
+  const category = siteConfig.categories.find(cat => cat.id === menuItem.categoryId);
+  const categoryName = category ? category.name : "";
+  
   return [{
-    alt: `${menuItem.name} - ${menuItem.category} - Got Plate Lunch`,
+    alt: `${menuItem.name} - ${categoryName} - Got Plate Lunch`,
   }];
 }
 
@@ -31,8 +35,12 @@ export default async function Image({ params }: { params: { id: string } }) {
   const menuItem = siteConfig.menuItems.find(item => item.id === id) || {
     name: "Menu Item",
     description: "Authentic Hawaiian Cuisine",
-    category: "Menu",
+    categoryId: "",
   };
+  
+  // Get category name from categoryId
+  const category = siteConfig.categories.find(cat => cat.id === menuItem.categoryId);
+  const categoryName = category ? category.name : "Menu";
   
   return new ImageResponse(
     (
@@ -167,7 +175,7 @@ export default async function Image({ params }: { params: { id: string } }) {
                   marginBottom: '10px',
                 }}
               >
-                {menuItem.category} • Got Plate Lunch
+                {categoryName} • Got Plate Lunch
               </div>
               <h2
                 style={{

@@ -8,12 +8,9 @@ import { useState } from "react";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site";
 
-const categories = ["Popular", "Breakfast", "Lunch/Dinner", "Sides"];
-
 export function MenuItems() {
-  const [selectedCategory, setSelectedCategory] = useState("Popular");
+  const [selectedCategory, setSelectedCategory] = useState(siteConfig.categories[0].id);
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -34,11 +31,9 @@ export function MenuItems() {
     },
   };
 
+  // Filter items by selected category
   const filteredItems = siteConfig.menuItems.filter((item) => {
-    if (selectedCategory === "Popular") {
-      return item.isFeatured;
-    }
-    return item.category === selectedCategory;
+    return item.categoryId === selectedCategory;
   });
 
   return (
@@ -49,7 +44,7 @@ export function MenuItems() {
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-12 md:mb-16"
@@ -61,7 +56,7 @@ export function MenuItems() {
             <motion.span
               className="absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-full"
               initial={{ width: "0%" }}
-              whileInView={{ width: "100%" }}
+              animate={{ width: "100%" }}
               transition={{ duration: 1, delay: 0.5 }}
               viewport={{ once: true }}
             />
@@ -72,19 +67,18 @@ export function MenuItems() {
         </motion.div>
 
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category) => (
+          {siteConfig.categories.map((category) => (
             <Button
-              key={category}
-              variant={selectedCategory === category ? "brand" : "soft"}
-              onClick={() => setSelectedCategory(category)}
+              key={category.id}
+              variant={selectedCategory === category.id ? "brand" : "soft"}
+              onClick={() => setSelectedCategory(category.id)}
               className="font-medium text-lg px-8"
             >
-              {category}
+              {category.name}
             </Button>
           ))}
         </div>
 
-        {/* Menu Items Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"

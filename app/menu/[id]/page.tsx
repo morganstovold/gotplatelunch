@@ -24,6 +24,10 @@ export async function generateMetadata({
     };
   }
 
+  // Find the category name from categoryId
+  const category = siteConfig.categories.find(cat => cat.id === menuItem.categoryId);
+  const categoryName = category ? category.name : "";
+
   return {
     title: `${menuItem.name} | Got Plate Lunch Menu`,
     description: menuItem.longDescription || menuItem.description,
@@ -32,7 +36,7 @@ export async function generateMetadata({
       "plate lunch",
       menuItem.name.toLowerCase(),
       ...(menuItem.dietaryInfo || []),
-      menuItem.category.toLowerCase(),
+      categoryName.toLowerCase(),
     ],
     alternates: {
       canonical: `/menu/${menuItem.id}`,
@@ -72,6 +76,10 @@ export default async function MenuItemPage({
   if (!menuItem) {
     notFound();
   }
+
+  // Find the category name from categoryId
+  const category = siteConfig.categories.find(cat => cat.id === menuItem.categoryId);
+  const categoryName = category ? category.name : "";
 
   return (
     <main className="flex flex-col items-center relative min-h-screen">
@@ -116,8 +124,15 @@ export default async function MenuItemPage({
               </span>
             </h1>
 
-            <div className="mb-4 text-2xl font-semibold text-gray-800">
-              ${menuItem.price}
+            <div className="flex justify-between items-center mb-4">
+              <div className="text-2xl font-semibold text-gray-800">
+                ${menuItem.price}
+              </div>
+              {categoryName && (
+                <div className="text-sm bg-orange-100 text-orange-800 px-3 py-1 rounded-full">
+                  {categoryName}
+                </div>
+              )}
             </div>
 
             <p className="text-gray-700 text-lg mb-6">
