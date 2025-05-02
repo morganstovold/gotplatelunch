@@ -58,7 +58,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: '/privacy',
       lastModified: new Date(),
-  // Combine all routes
       changeFrequency: 'yearly' as const,
       priority: 0.3,
     },
@@ -83,6 +82,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.5,
+    },
+    {
+      url: '/not-found/opengraph-image',
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
     },
     {
       url: '/api/og',
