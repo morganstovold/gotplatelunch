@@ -3,7 +3,7 @@ import SpamMusubi from "@/public/spam-musubi.jpg";
 import KaluaPork from "@/public/kalua-pork.jpg";
 import ChickenKatsu from "@/public/chicken-katsu.jpg";
 import MacaroniSalad from "@/public/placeholder.jpg";
-import UltimateLocoMoco from "@/public/ultimate-loco-moco.jpg";
+import UltimateLocoMoco from "@/public/ultimate-loco-moto.jpg";
 import SteakGravy from "@/public/steak-gravy.jpg";
 import BBQChicken from "@/public/bbq-chicken.jpg";
 import SpicyBBQChicken from "@/public/bbq-chicken.jpg";
