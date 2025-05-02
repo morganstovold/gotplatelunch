@@ -118,6 +118,27 @@ const categories = ["Popular", "Breakfast", "Lunch/Dinner", "Sides"];
 export function MenuItems() {
   const [selectedCategory, setSelectedCategory] = useState("Popular");
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
+
   const filteredItems = menuItems.filter((item) => {
     if (selectedCategory === "Popular") {
       return item.isPopular;
@@ -126,8 +147,35 @@ export function MenuItems() {
   });
 
   return (
-    <section className="relative w-full py-24 pb-52">
+    <section
+      id="menu"
+      className="w-full py-12 sm:py-16 md:py-20 lg:py-24 relative"
+    >
       <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-12 md:mb-16"
+        >
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 relative inline-block">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-orange-500">
+              Our Delicious Menu
+            </span>
+            <motion.span
+              className="absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-full"
+              initial={{ width: "0%" }}
+              whileInView={{ width: "100%" }}
+              transition={{ duration: 1, delay: 0.5 }}
+              viewport={{ once: true }}
+            />
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
+            Explore our selection of authentic Hawaiian cuisine made with Aloha
+          </p>
+        </motion.div>
+
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {categories.map((category) => (
             <Button
@@ -142,37 +190,41 @@ export function MenuItems() {
         </div>
 
         {/* Menu Items Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {filteredItems.map((item) => (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+              variants={itemVariants}
+              className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
             >
-              <div className="relative h-48">
+              <div className="relative h-52 overflow-hidden">
                 <Image
                   src={item.image}
                   alt={item.name}
                   fill
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 {item.isPopular && (
-                  <div className="absolute top-2 right-2">
-                    <Badge variant="brand" className="font-medium">
+                  <div className="absolute top-3 right-3">
+                    <Badge variant="brand" className="font-medium text-sm">
                       Popular
                     </Badge>
                   </div>
                 )}
               </div>
               <div className="p-6">
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-xl font-bold text-gray-900">
+                <div className="flex justify-between items-start mb-2 bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-orange-500">
+                  <h3 className="text-xl font-bold">
                     {item.name}
                   </h3>
-                  <span className="text-lg font-bold text-yellow-600">
+                  <span className="text-lg font-bold">
                     ${item.price}
                   </span>
                 </div>
@@ -189,7 +241,7 @@ export function MenuItems() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

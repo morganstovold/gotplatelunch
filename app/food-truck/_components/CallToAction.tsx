@@ -8,30 +8,72 @@ import foodTruck1 from "@/public/food-truck-1.jpg";
 import foodTruck2 from "@/public/food-truck-2.jpg";
 
 export function FoodTruckCTA() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
   return (
     <section className="relative w-full py-24">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        whileInView="visible"
         viewport={{ once: true }}
-        className="container mx-auto text-center"
+        className="container mx-auto text-center will-change-transform"
       >
-        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 relative inline-block">
+        <motion.h2
+          variants={itemVariants}
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400 mb-6 relative inline-block"
+        >
           Book Our Food Truck!
-          <span
-            className="absolute -bottom-1 left-0 w-12 h-0.5 bg-yellow-400"
-            style={{
-              boxShadow: "0 0 6px #F0B222, 0 0 12px rgba(240, 178, 34, 0.6)",
-            }}
-          ></span>
-        </h2>
-        <p className="text-lg text-primary-foreground max-w-2xl mx-auto mb-8">
-          Looking to bring the taste of Hawaii to your next event? Our food
-          truck is available for private bookings, corporate events, weddings,
+          <motion.span
+            className="absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-red-400 to-orange-400 rounded-full will-change-transform"
+            initial={{ width: "0%" }}
+            animate={{ width: "48px" }}
+            whileInView={{ width: "48px" }}
+            transition={{ duration: 1, delay: 0.5 }}
+            viewport={{ once: true }}
+          />
+        </motion.h2>
+        <motion.p
+          variants={itemVariants}
+          className="text-lg text-primary-foreground max-w-2xl mx-auto mb-8"
+        >
+          Looking to bring the 
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-500 font-semibold"> taste of Hawaii </span>
+          to your next event? Our food truck is available for private bookings, corporate events, weddings,
           and more. Contact us today to discuss your catering needs!
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
+        </motion.p>
+        <motion.div
+          variants={containerVariants}
+          className="flex flex-col sm:flex-row justify-center gap-4 will-change-transform"
+        >
           <Link
             href="/contact"
             className={buttonVariants({ variant: "brand" })}
@@ -41,16 +83,17 @@ export function FoodTruckCTA() {
           <Link href="/menu" className={buttonVariants({ variant: "brand" })}>
             View Menu
           </Link>
-        </div>
+        </motion.div>
       </motion.div>
 
       <div className="mt-20 grid md:grid-cols-2 gap-8 container">
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          variants={imageVariants}
+          initial="hidden"
+          whileInView="visible"
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
-          className="bg-white rounded-lg overflow-hidden shadow-lg"
+          className="bg-background rounded-xl overflow-hidden shadow-xl border border-white/10 hover:shadow-2xl transition-shadow duration-300 will-change-transform"
         >
           <Image
             src={foodTruck1}
@@ -59,11 +102,12 @@ export function FoodTruckCTA() {
           />
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          variants={imageVariants}
+          initial="hidden"
+          whileInView="visible"
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
-          className="bg-white rounded-lg overflow-hidden shadow-lg"
+          className="bg-background rounded-xl overflow-hidden shadow-xl border border-white/10 hover:shadow-2xl transition-shadow duration-300 will-change-transform"
         >
           <Image
             src={foodTruck2}

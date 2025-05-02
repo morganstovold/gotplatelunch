@@ -32,72 +32,121 @@ const scheduleItems = [
 ];
 
 export function FoodTruckSchedule() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const rowVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   return (
-    <section className="w-full">
+    <section className="w-full py-20">
       <div className="container mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          whileInView="visible"
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-12 will-change-transform"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 relative inline-block">
+          <motion.h2
+            variants={itemVariants}
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400 mb-6 relative inline-block"
+          >
             Food Truck Schedule
-            <span
-              className="absolute -bottom-1 left-0 w-12 h-0.5 bg-yellow-400"
-              style={{
-                boxShadow: "0 0 6px #F0B222, 0 0 12px rgba(240, 178, 34, 0.6)",
-              }}
-            ></span>
-          </h2>
-          <p className="text-lg text-primary-foreground max-w-3xl mx-auto mb-2">
+            <motion.span
+              className="absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-red-400 to-orange-400 rounded-full will-change-transform"
+              initial={{ width: "0%" }}
+              animate={{ width: "48px" }}
+              whileInView={{ width: "48px" }}
+              transition={{ duration: 1, delay: 0.5 }}
+              viewport={{ once: true }}
+            />
+          </motion.h2>
+          <motion.p
+            variants={itemVariants}
+            className="text-lg text-primary-foreground max-w-3xl mx-auto mb-2"
+          >
             Find us at these upcoming locations. Truck schedules may change.
-          </p>
-          <p className="text-lg text-primary-foreground max-w-3xl mx-auto font-medium">
-            Please call the restaurant at (707) 745-4751 for any updates or
-            changes. Mahalo!
-          </p>
+          </motion.p>
+          <motion.p
+            variants={itemVariants}
+            className="text-lg text-primary-foreground max-w-3xl mx-auto font-medium"
+          >
+            Please call the restaurant at 
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-500 font-semibold"> (707) 745-4751 </span>
+            for any updates or changes. Mahalo!
+          </motion.p>
         </motion.div>
 
-        <div className="grid gap-6 mb-12">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid gap-6 mb-12 will-change-transform"
+        >
           {scheduleItems.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-white p-6 rounded-lg shadow-md flex flex-col md:flex-row md:items-center md:justify-between"
+              variants={rowVariants}
+              custom={index}
+              className="bg-background backdrop-blur-sm rounded-xl p-6 border border-white/10 shadow-xl flex flex-col md:flex-row md:items-center md:justify-between hover:shadow-2xl transition-shadow duration-300"
             >
               <div className="md:w-1/4 mb-4 md:mb-0">
-                <h3 className="text-xl font-bold text-gray-900">{item.date}</h3>
+                <h3 className="text-xl font-bold text-primary-foreground">{item.date}</h3>
                 <p className="text-primary-foreground">{item.time}</p>
               </div>
               <div className="md:w-1/2 mb-4 md:mb-0">
-                <h4 className="text-lg font-bold text-yellow-400">
+                <h4 className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400">
                   {item.location}
                 </h4>
                 <p className="text-primary-foreground">{item.address}</p>
               </div>
               <div className="md:w-1/4 text-right">
-                <Button variant="soft" className="font-medium">
+                <Button variant="brand" className="font-medium">
                   Get Directions
                 </Button>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          className="flex justify-center w-full"
+          className="flex justify-center w-full will-change-transform"
         >
-          <div className="bg-white p-8 rounded-lg shadow-md w-full text-center">
-            <div className="text-2xl text-yellow-400 mb-4">
+          <motion.div
+            variants={itemVariants}
+            className="bg-background backdrop-blur-sm rounded-xl p-8 border border-white/10 shadow-xl w-full text-center hover:shadow-2xl transition-shadow duration-300"
+          >
+            <div className="text-2xl bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400 mb-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-10 w-10 mx-auto"
@@ -126,7 +175,7 @@ export function FoodTruckSchedule() {
             >
               Contact Us
             </Link>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

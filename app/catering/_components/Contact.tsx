@@ -6,18 +6,18 @@ import Link from "next/link";
 
 export function CateringContact() {
   return (
-    <section className="relative w-full pb-12">
+    <section className="relative w-full py-12 md:py-16 lg:py-24">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden"
+          className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden border border-gray-100"
         >
           <div className="p-8 md:p-12">
-            <div className="flex justify-center mb-6">
-              <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center">
+            <div className="flex justify-center mb-8">
+              <div className="w-16 h-16 bg-gradient-to-r from-red-400 to-orange-400 rounded-full flex items-center justify-center shadow-md">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-8 w-8 text-white"
@@ -36,15 +36,15 @@ export function CateringContact() {
             </div>
 
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 relative inline-block">
+              <h2 className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400 mb-6 relative inline-block pb-2">
                 Request Catering Information
-                <span
-                  className="absolute -bottom-1 left-0 right-0 mx-auto w-12 h-0.5 bg-yellow-400"
-                  style={{
-                    boxShadow:
-                      "0 0 6px #F0B222, 0 0 12px rgba(240, 178, 34, 0.6)",
-                  }}
-                ></span>
+                <motion.span
+                  className="absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-red-400 to-orange-400 rounded-full"
+                  initial={{ width: "0%" }}
+                  animate={{ width: "48px" }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                  viewport={{ once: true }}
+                />
               </h2>
 
               <p className="text-lg text-primary-foreground mb-4">
@@ -52,7 +52,7 @@ export function CateringContact() {
               </p>
               <a
                 href="mailto:catering@gotplatelunch.com"
-                className="text-xl font-bold text-yellow-600 hover:text-yellow-700 transition-colors"
+                className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400 hover:from-red-500 hover:to-orange-500 transition-colors"
               >
                 catering@gotplatelunch.com
               </a>
@@ -64,7 +64,7 @@ export function CateringContact() {
             <div className="flex justify-center">
               <Link
                 href="mailto:catering@gotplatelunch.com"
-                className={buttonVariants({ variant: "brand" })}
+                className={buttonVariants({ variant: "brand", size: "lg" })}
               >
                 Send Email Inquiry
               </Link>

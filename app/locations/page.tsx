@@ -3,6 +3,7 @@ import Image from "next/image";
 import seamlessBg from "@/public/palm-pattern.jpg";
 import { LocationsHero } from "./_components/Hero";
 import { Locations } from "./_components/Locations";
+import { CallToAction } from "../_components/CallToAction";
 
 export default function LocationsPage() {
   return (
@@ -16,6 +17,7 @@ export default function LocationsPage() {
 
       <LocationsHero />
       <Locations />
+      <CallToAction />
       <Footer />
     </main>
   );

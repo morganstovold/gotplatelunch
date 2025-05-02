@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Separator } from "./ui/separator";
 import { motion } from "motion/react";
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -83,14 +84,26 @@ export function Footer() {
 
             <div className="space-y-4 mt-6 lg:mt-0">
               <h3 className="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400 font-bold mb-4">
-                Visit Us
+                Find Us
               </h3>
-              <address className="not-italic text-red-100/90 space-y-2">
-                <p>123 Aloha Street</p>
-                <p>Benicia, CA 94510</p>
-                <p>Phone: (555) 123-4567</p>
+              <div className="text-red-100/90 space-y-3">
+                <div>
+                  <p className="font-semibold">Multiple Locations:</p>
+                  <ul className="mt-2 space-y-1">
+                    <li>9th St Restaurant, Benicia</li>
+                    <li>Bayshore Rd Express, Benicia</li>
+                    <li>Food Truck - Various Locations</li>
+                  </ul>
+                  <Link 
+                    href="/locations" 
+                    className="inline-block mt-3 text-sm bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400 hover:opacity-80"
+                  >
+                    View All Locations →
+                  </Link>
+                </div>
+                <p>Phone: (707) 745-4751</p>
                 <p>Email: info@gotplatelunch.com</p>
-              </address>
+              </div>
             </div>
           </div>
 

@@ -93,9 +93,12 @@ export function BusinessInfo() {
                 variants={itemVariants}
                 className="bg-background backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/10 shadow-xl"
               >
-                <h3 className="text-lg sm:text-xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400">
-                  Hours of Operation
+                <h3 className="text-lg sm:text-xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400">
+                  Hours of Operation - 9th St Restaurant
                 </h3>
+                <p className="text-sm text-gray-600 mb-4 italic">
+                  Hours may vary by location. Visit our <Link href="/locations" className="text-red-500 underline hover:text-red-600">Locations</Link> page for specific hours at each location.
+                </p>
                 <ul className="space-y-3">
                   <li className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-white/10 pb-2">
                     <span className="font-medium mb-1 sm:mb-0">Monday - Thursday</span>
@@ -120,7 +123,7 @@ export function BusinessInfo() {
 
               <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
                 <Link
-                  href="/contact"
+                  href="/locations"
                   className={buttonVariants({
                     size: "lg",
                     variant: "brand",

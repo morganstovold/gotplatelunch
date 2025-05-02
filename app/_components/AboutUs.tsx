@@ -33,14 +33,13 @@ export function AboutUs() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-18 items-center">
           <motion.div
             variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
+            animate="visible"
             viewport={{ once: true }}
             className="space-y-4 order-2 md:order-1"
           >
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400 mb-4 sm:mb-6 relative inline-block pb-2"
             >
@@ -48,7 +47,7 @@ export function AboutUs() {
               <motion.span
                 className="absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-red-400 to-orange-400 rounded-full"
                 initial={{ width: "0%" }}
-                whileInView={{ width: "48px" }}
+                animate={{ width: "48px" }}
                 transition={{ duration: 1, delay: 0.5 }}
                 viewport={{ once: true }}
               />
@@ -105,7 +104,7 @@ export function AboutUs() {
           <motion.div className="relative mx-auto max-w-md md:max-w-full order-1 md:order-2 mb-8 md:mb-0">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >

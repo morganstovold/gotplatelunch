@@ -91,23 +91,24 @@ const cateringOptions = [
 
 export function CateringOptions() {
   return (
-    <section className="w-full py-20">
-      <div className="container mx-auto">
+    <section className="w-full py-12 md:py-16 lg:py-24">
+      <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 relative inline-block">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400 mb-4 relative inline-block pb-2">
             Catering Options
-            <span
-              className="absolute -bottom-1 left-0 w-12 h-0.5 bg-yellow-400"
-              style={{
-                boxShadow: "0 0 6px #F0B222, 0 0 12px rgba(240, 178, 34, 0.6)",
-              }}
-            ></span>
+            <motion.span
+              className="absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-red-400 to-orange-400 rounded-full"
+              initial={{ width: "0%" }}
+              animate={{ width: "48px" }}
+              transition={{ duration: 1, delay: 0.5 }}
+              viewport={{ once: true }}
+            />
           </h2>
           <p className="text-lg text-primary-foreground max-w-3xl mx-auto">
             We offer multiple catering options to fit your event needs. Choose
@@ -124,7 +125,7 @@ export function CateringOptions() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white rounded-lg overflow-hidden shadow-lg"
+              className="bg-white rounded-lg overflow-hidden shadow-xl border border-gray-100"
             >
               <div className="h-48 overflow-hidden">
                 <Image
@@ -135,10 +136,10 @@ export function CateringOptions() {
               </div>
               <div className="p-6">
                 <div className="mb-4 flex items-center">
-                  <div className="size-10 bg-yellow-400 rounded-full flex items-center justify-center mr-3 text-white">
+                  <div className="size-10 bg-gradient-to-r from-red-400 to-orange-400 rounded-full flex items-center justify-center mr-3 text-white shadow-md">
                     {option.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900">
+                  <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400">
                     {option.title}
                   </h3>
                 </div>
@@ -152,7 +153,7 @@ export function CateringOptions() {
                   <ul className="space-y-2">
                     {option.details.map((detail, idx) => (
                       <li key={idx} className="flex items-start">
-                        <span className="text-yellow-500 mr-2">•</span>
+                        <span className="text-orange-500 mr-2">•</span>
                         <span className="text-primary-foreground">
                           {detail}
                         </span>

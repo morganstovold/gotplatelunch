@@ -3,6 +3,7 @@ import Image from "next/image";
 import seamlessBg from "@/public/palm-pattern.jpg";
 import { MenuHero } from "./_components/Hero";
 import { MenuItems } from "./_components/Items";
+import { CallToAction } from "../_components/CallToAction";
 
 export default function MenuPage() {
   return (
@@ -16,6 +17,7 @@ export default function MenuPage() {
 
       <MenuHero />
       <MenuItems />
+      <CallToAction />
       <Footer />
     </main>
   );
