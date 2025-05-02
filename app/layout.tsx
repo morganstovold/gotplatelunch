@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Merriweather_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const merriweatherSans = Merriweather_Sans({
   variable: "--font-merriweather-sans",
@@ -25,6 +27,8 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
