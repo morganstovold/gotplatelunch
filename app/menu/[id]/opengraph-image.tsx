@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { siteConfig } from '@/lib/site';
 
+
 // Image metadata
 export const size = {
   width: 1200,
@@ -77,7 +78,14 @@ export default async function Image({ params }: { params: { id: string } }) {
         />
 
         {/* Palm leaves pattern (simplified as shapes) */}
-        <div style={{ position: 'absolute', top: 20, left: 20, opacity: 0.1, zIndex: 1 }}>
+        <div style={{ 
+          position: 'absolute', 
+          top: 20, 
+          left: 20, 
+          opacity: 0.1, 
+          zIndex: 1,
+          display: 'flex' 
+        }}>
           {Array.from({ length: 5 }).map((_, i) => (
             <div
               key={i}
@@ -94,7 +102,14 @@ export default async function Image({ params }: { params: { id: string } }) {
           ))}
         </div>
 
-        <div style={{ position: 'absolute', bottom: 20, right: 20, opacity: 0.1, zIndex: 1 }}>
+        <div style={{ 
+          position: 'absolute', 
+          bottom: 20, 
+          right: 20, 
+          opacity: 0.1, 
+          zIndex: 1,
+          display: 'flex'
+        }}>
           {Array.from({ length: 5 }).map((_, i) => (
             <div
               key={i}
@@ -141,6 +156,8 @@ export default async function Image({ params }: { params: { id: string } }) {
                 background: 'linear-gradient(to right, #f43f5e, #fb923c)',
                 padding: '30px',
                 color: 'white',
+                display: 'flex',
+                flexDirection: 'column'
               }}
             >
               <div

@@ -60,7 +60,14 @@ export default async function Image() {
         />
 
         {/* Palm leaves pattern (simplified as shapes) */}
-        <div style={{ position: 'absolute', top: 20, left: 20, opacity: 0.1, zIndex: 1 }}>
+        <div style={{ 
+          position: 'absolute', 
+          top: 20, 
+          left: 20, 
+          opacity: 0.1, 
+          zIndex: 1,
+          display: 'flex' 
+        }}>
           {Array.from({ length: 5 }).map((_, i) => (
             <div
               key={i}
@@ -77,7 +84,14 @@ export default async function Image() {
           ))}
         </div>
 
-        <div style={{ position: 'absolute', bottom: 20, right: 20, opacity: 0.1, zIndex: 1 }}>
+        <div style={{ 
+          position: 'absolute', 
+          bottom: 20, 
+          right: 20, 
+          opacity: 0.1, 
+          zIndex: 1,
+          display: 'flex'
+        }}>
           {Array.from({ length: 5 }).map((_, i) => (
             <div
               key={i}
