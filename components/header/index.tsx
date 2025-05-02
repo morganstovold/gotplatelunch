@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "motion/react";
 import { cn } from "@/lib/utils";
 import Logo from "@/components/logo";
 import MobileNav from "./mobile-nav";
@@ -30,13 +30,13 @@ export const navItems = [
     target: false,
   },
   {
-    label: "Order",
-    href: "/order-now",
+    label: "Locations",
+    href: "/locations",
     target: false,
   },
   {
-    label: "Contact",
-    href: "/contact",
+    label: "Menu",
+    href: "/menu",
     target: false,
   },
 ];
@@ -83,32 +83,34 @@ export function Header() {
           : "transition-transform duration-100 ease-in"
       )}
     >
-      <motion.div
-        className={cn(
-          "flex items-center justify-between w-full py-4 border-2 rounded-full mx-auto container",
-          scrolled
-            ? "shadow-md bg-background/95 mx-auto px-4 transition-all duration-200 ease-out will-change-transform"
-            : "transition-all duration-100 ease-in will-change-transform border-transparent"
-        )}
-      >
-        <motion.div transition={{ duration: 0.2 }}>
-          <Link
-            href="/"
-            aria-label="Home page"
-            className="flex items-center shrink-0 px-2"
-          >
-            <Logo />
-          </Link>
+      <div className="container mx-auto">
+        <motion.div
+          className={cn(
+            "flex items-center justify-between w-full py-4 border-2 rounded-xl",
+            scrolled
+              ? "shadow-md bg-background/95 mx-auto px-4 transition-all duration-200 ease-out will-change-transform"
+              : "transition-all duration-100 ease-in will-change-transform border-transparent"
+          )}
+        >
+          <motion.div transition={{ duration: 0.2 }}>
+            <Link
+              href="/"
+              aria-label="Home page"
+              className="flex items-center shrink-0 px-2"
+            >
+              <Logo />
+            </Link>
+          </motion.div>
+
+          <div className="hidden lg:flex items-center gap-8">
+            <DesktopNav navItems={navItems} />
+          </div>
+
+          <div className="flex items-center lg:hidden">
+            <MobileNav navItems={navItems} />
+          </div>
         </motion.div>
-
-        <div className="hidden lg:flex items-center gap-8">
-          <DesktopNav navItems={navItems} />
-        </div>
-
-        <div className="flex items-center lg:hidden">
-          <MobileNav navItems={navItems} />
-        </div>
-      </motion.div>
+      </div>
     </motion.header>
   );
 }

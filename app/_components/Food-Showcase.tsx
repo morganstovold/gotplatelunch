@@ -1,12 +1,12 @@
 "use client";
 
-import { Button } from "../../components/ui/button";
+import Link from "next/link";
+import { buttonVariants } from "../../components/ui/button";
 import { siteConfig } from "../../lib/site";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image";
 
 export function FoodShowcase() {
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -37,36 +37,8 @@ export function FoodShowcase() {
   };
 
   return (
-    <section className="w-full py-16 sm:py-20 md:py-28 relative overflow-hidden">
-      {/* Decorative circles - positioned with percentages to ensure they stay within bounds */}
-      <motion.div
-        className="absolute top-[20%] left-[5%] w-40 sm:w-56 h-40 sm:h-56 rounded-full bg-gradient-to-r from-yellow-300/10 to-orange-400/10 blur-3xl"
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-
-      <motion.div
-        className="absolute bottom-[10%] right-[5%] w-48 sm:w-72 h-48 sm:h-72 rounded-full bg-gradient-to-r from-teal-300/10 to-blue-400/10 blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.2, 0.4, 0.2],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-      />
-
-      <div className="container mx-auto px-4 relative z-10">
+    <section className="w-full py-16 relative overflow-hidden">
+      <div className="container mx-auto relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -86,6 +58,7 @@ export function FoodShowcase() {
               initial={{ width: "0%" }}
               whileInView={{ width: "100%" }}
               transition={{ duration: 1, delay: 0.5 }}
+              viewport={{ once: true }}
             />
           </motion.h2>
           <motion.p
@@ -132,23 +105,11 @@ export function FoodShowcase() {
                   <h3 className="text-lg sm:text-xl font-bold mb-2 group-hover:text-amber-600 transition-colors duration-300">
                     {item.name}
                   </h3>
-                  <p className="text-sm sm:text-base text-gray-600">{item.description}</p>
+                  <p className="text-sm sm:text-base text-gray-600">
+                    {item.description}
+                  </p>
                 </div>
               </motion.div>
-
-              {/* Floating corner decoration - properly constrained */}
-              <motion.div
-                className="absolute top-0 right-0 w-10 h-10 sm:w-16 sm:h-16 rounded-bl-3xl bg-gradient-to-br from-orange-400/0 to-orange-400/5 opacity-0 group-hover:opacity-100"
-                animate={{
-                  rotate: [0, 10, 0],
-                  scale: [0.8, 1, 0.8],
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
             </motion.div>
           ))}
         </motion.div>
@@ -161,13 +122,15 @@ export function FoodShowcase() {
           className="text-center mt-10 sm:mt-16"
         >
           <motion.div variants={itemVariants}>
-            <Button
-              size="lg"
-              variant="default"
-              className="font-bold px-6 sm:px-8"
+            <Link
+              href="/menu"
+              className={buttonVariants({
+                size: "lg",
+                variant: "yellow",
+              })}
             >
               View Full Menu
-            </Button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

@@ -1,20 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Merriweather_Sans } from "next/font/google";
+import { Merriweather_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import Image from "next/image";
-import seamlessBg from "@/public/palm-pattern.jpg";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const merriweatherSans = Merriweather_Sans({
   variable: "--font-merriweather-sans",
@@ -34,18 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${merriweatherSans.variable} antialiased min-h-screen bg-background overscroll-none relative`}
+        className={`${merriweatherSans.className} antialiased min-h-screen bg-background overscroll-none relative`}
       >
-        {/* use the seamless-bg.jpg to create a background overlay effect */}
-        <Image
-          src={seamlessBg}
-          alt="Palm Pattern"
-          fill
-          className="absolute inset-0 top-0 opacity-10 h-full bg-repeat bg-center bg-cover -z-1"
-        />
         <Header />
         {children}
-        <Footer />
       </body>
     </html>
   );

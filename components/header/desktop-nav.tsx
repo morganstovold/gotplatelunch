@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Link from "next/link";
 
 interface NavItem {
@@ -29,7 +29,7 @@ export default function DesktopNav({ navItems }: DesktopNavProps) {
           >
             {item.label}
             <motion.span
-              className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#F0B222] transition-all duration-300 nav-glow"
+              className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#F0B222] transition-all duration-300"
               layoutId={`underline-${item.label}`}
             />
           </Link>

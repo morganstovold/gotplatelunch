@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { MenuIcon } from "lucide-react";
 import {
   Sheet,
