@@ -104,7 +104,7 @@ export function MenuItems() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   {item.isFeatured && (
                     <div className="absolute top-3 right-3">
-                      <Badge variant="brand" className="font-medium text-sm">
+                      <Badge variant="outline" className="font-medium text-sm">
                         Popular
                       </Badge>
                     </div>
