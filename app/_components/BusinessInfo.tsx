@@ -5,8 +5,12 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import FoodTruck2 from "../../public/food-truck-2.jpg";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
 
 export function BusinessInfo() {
+  // Award years
+  const awardYears = [2017, 2018, 2019, 2020, 2021, 2022, 2023];
+  
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -89,36 +93,42 @@ export function BusinessInfo() {
                 restaurant franchises.
               </motion.p>
 
+              {/* Awards Section (replacing Hours of Operation) */}
               <motion.div
                 variants={itemVariants}
-                className="bg-background backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/10 shadow-xl"
+                className="bg-gradient-to-r from-amber-50/80 to-orange-50/80 rounded-xl p-4 sm:p-6 border border-amber-100 shadow-xl"
               >
-                <h3 className="text-lg sm:text-xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400">
-                  Hours of Operation - 9th St Restaurant
-                </h3>
-                <p className="text-sm text-gray-600 mb-4 italic">
-                  Hours may vary by location. Visit our <Link href="/locations" className="text-red-500 underline hover:text-red-600">Locations</Link> page for specific hours at each location.
+                <div className="flex items-center gap-3 mb-3">
+                  <svg 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="w-10 h-10 text-amber-500 flex-shrink-0"
+                  >
+                    <path d="M7 22H17M12 17V22M7 8.5V11.5C7 14.26 9.24 16.5 12 16.5C14.76 16.5 17 14.26 17 11.5V8.5M19 5H21C21 3.34 19.66 2 18 2H6C4.34 2 3 3.34 3 5H5M19 8.5C19 8.5 20 8.5 21 8.5C21 11.54 18.76 14 16 14M5 8.5C5 8.5 4 8.5 3 8.5C3 11.54 5.24 14 8 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-red-500">
+                      Award-Winning Island Cuisine
+                    </h3>
+                    <p className="text-sm sm:text-base text-neutral-700">
+                      Times-Herald Best of {awardYears.join(", ")} · First Place
+                    </p>
+                  </div>
+                </div>
+                
+                <p className="text-base font-medium text-neutral-700 mb-4">
+                  Voted the <span className="font-bold text-amber-600">BEST Island Restaurant</span> in Solano County
                 </p>
-                <ul className="space-y-3">
-                  <li className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-white/10 pb-2">
-                    <span className="font-medium mb-1 sm:mb-0">Monday - Thursday</span>
-                    <span className="bg-red-400/10 px-3 py-1 rounded-full text-red-500 font-medium text-sm sm:text-base w-fit">
-                      11AM - 8PM
-                    </span>
-                  </li>
-                  <li className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-white/10 pb-2">
-                    <span className="font-medium mb-1 sm:mb-0">Friday - Saturday</span>
-                    <span className="bg-red-400/10 px-3 py-1 rounded-full text-red-500 font-medium text-sm sm:text-base w-fit">
-                      11AM - 9PM
-                    </span>
-                  </li>
-                  <li className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
-                    <span className="font-medium mb-1 sm:mb-0">Sunday</span>
-                    <span className="bg-red-400/10 px-3 py-1 rounded-full text-red-500 font-medium text-sm sm:text-base w-fit">
-                      12PM - 7PM
-                    </span>
-                  </li>
-                </ul>
+                
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {awardYears.map(year => (
+                    <Badge key={year} variant="outline" className="text-sm bg-amber-100/80 text-amber-800 border-amber-200 hover:bg-amber-200">
+                      {year}
+                    </Badge>
+                  ))}
+                </div>
               </motion.div>
 
               <motion.div variants={itemVariants} className="flex flex-wrap gap-4">

@@ -4,7 +4,6 @@ import { FoodShowcase } from "./_components/Food-Showcase";
 import { BusinessInfo } from "./_components/BusinessInfo";
 import { Testimonials } from "./_components/Testimonials";
 import { CallToAction } from "./_components/CallToAction";
-import { ChefQuote } from "./_components/ChefQuote";
 import { Footer } from "../components/footer";
 import Image from "next/image";
 import seamlessBg from "@/public/palm-pattern.jpg";
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <main className="flex flex-col items-center relative">
+    <main className="flex flex-col items-center relative overflow-hidden">
       <Image
         src={seamlessBg}
         alt="Palm Pattern"
@@ -39,7 +38,6 @@ export default function HomePage() {
       />
       
       <Hero />
-      <ChefQuote />
       <AboutUs />
       <FoodShowcase />
       <BusinessInfo />

@@ -27,7 +27,7 @@ export function Footer() {
 
   return (
     <footer className="relative w-full overflow-hidden">
-      <div className="relative w-full">
+      <div className="relative w-full -mb-0.5">
         <svg
           className="w-full h-auto"
           viewBox="0 0 1440 120"
@@ -37,12 +37,12 @@ export function Footer() {
         >
           <path
             d="M0 0L48 8C96 16 192 32 288 42.7C384 53 480 59 576 58.7C672 59 768 53 864 42.7C960 32 1056 16 1152 10.7C1248 5 1344 11 1392 13.3L1440 16V120H1392C1344 120 1248 120 1152 120C1056 120 960 120 864 120C768 120 672 120 576 120C480 120 384 120 288 120C192 120 96 120 48 120H0V0Z"
-            className="fill-neutral-950/95"
+            className="fill-neutral-950"
           />
         </svg>
       </div>
 
-      <div className="bg-neutral-950/95 backdrop-blur-md to-90% pt-8 pb-12 relative overflow-hidden">
+      <div className="bg-neutral-950 backdrop-blur-md to-90% pt-8 pb-12 relative overflow-hidden">
         <div className="container mx-auto relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
             <div className="space-y-4">

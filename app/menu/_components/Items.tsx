@@ -47,7 +47,7 @@ export function MenuItems() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 relative inline-block">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-orange-500">

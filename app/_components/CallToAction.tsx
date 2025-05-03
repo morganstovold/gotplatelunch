@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 
 export function CallToAction() {
   return (
-    <section className="relative w-full py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden">
+    <section className="relative w-full py-12 sm:py-16 md:py-20 lg:py-24 mb-0 overflow-hidden">
       <div className="container mx-auto relative z-10">
         <motion.div
           className="max-w-4xl mx-auto rounded-2xl overflow-hidden relative bg-white/50 backdrop-blur-sm p-4 sm:p-8 md:p-12 shadow-xl"

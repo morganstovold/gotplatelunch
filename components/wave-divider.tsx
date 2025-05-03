@@ -33,8 +33,8 @@ export function WaveDivider({
   const primaryColor = colors[0];
 
   return (
-    <div className="relative w-full h-36 overflow-hidden">
-      <div className="absolute bottom-0 left-0 w-full h-full overflow-hidden">
+    <div className="relative w-full h-48 top-6">
+      <div className="absolute bottom-0 left-0 w-full overflow-visible">
         <svg
           className="absolute bottom-0 w-full h-full"
           xmlns="http://www.w3.org/2000/svg"

@@ -24,7 +24,7 @@ export default function MobileNav({ navItems }: MobileNavProps) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="ml-2">
+    <div className="mr-6">
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
           <motion.button
