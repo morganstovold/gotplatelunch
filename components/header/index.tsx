@@ -101,7 +101,7 @@ export function Header() {
             <Link
               href="/"
               aria-label="Home page"
-              className="flex items-center shrink-0 px-2"
+              className="flex items-center shrink-0 pl-6"
             >
               <Logo />
             </Link>

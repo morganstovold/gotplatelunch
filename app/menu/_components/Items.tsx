@@ -5,120 +5,12 @@ import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
-
-import locoMoco from "@/public/loco-moco.jpg";
-import spamFriedRice from "@/public/placeholder.jpg";
-import acaiBowl from "@/public/poke-bowl.jpg";
-import kaluaPork from "@/public/kalua-pork.jpg";
-import chickenKatsu from "@/public/chicken-katsu.jpg";
-import garlicShrimp from "@/public/placeholder.jpg";
-import teriyakiChicken from "@/public/placeholder.jpg";
-import spicyPoke from "@/public/placeholder.jpg";
-import spamMusubi from "@/public/spam-musubi.jpg";
-import macaroniSalad from "@/public/placeholder.jpg";
-
-const menuItems = [
-  {
-    id: "loco-moco",
-    name: "Loco Moco",
-    description: "Hamburger steak over rice, topped with eggs and brown gravy",
-    price: "15.99",
-    image: locoMoco,
-    category: "Breakfast",
-    isPopular: true,
-    dietaryInfo: ["Contains Eggs"],
-  },
-  {
-    id: "spam-fried-rice",
-    name: "Spam Fried Rice",
-    description: "Classic Hawaiian breakfast with eggs and green onions",
-    price: "13.99",
-    image: spamFriedRice,
-    category: "Breakfast",
-    dietaryInfo: ["Contains Eggs"],
-  },
-  {
-    id: "acai-bowl",
-    name: "Açaí Bowl",
-    description: "Fresh açaí blend topped with granola, banana, and honey",
-    price: "12.99",
-    image: acaiBowl,
-    category: "Breakfast",
-    dietaryInfo: ["Vegetarian"],
-  },
-  {
-    id: "kalua-pork",
-    name: "Kalua Pork",
-    description: "Traditional Hawaiian pulled pork, slow-cooked to perfection",
-    price: "14.99",
-    image: kaluaPork,
-    category: "Lunch/Dinner",
-    isPopular: true,
-    dietaryInfo: ["Gluten-Free"],
-  },
-  {
-    id: "chicken-katsu",
-    name: "Chicken Katsu",
-    description: "Crispy panko-breaded chicken cutlet with tonkatsu sauce",
-    price: "13.99",
-    image: chickenKatsu,
-    category: "Lunch/Dinner",
-    isPopular: true,
-  },
-  {
-    id: "garlic-shrimp",
-    name: "Garlic Shrimp",
-    description: "North Shore style garlic shrimp with butter and lemon",
-    price: "16.99",
-    image: garlicShrimp,
-    category: "Lunch/Dinner",
-    dietaryInfo: ["Gluten-Free"],
-  },
-  {
-    id: "teriyaki-chicken",
-    name: "Teriyaki Chicken",
-    description: "Grilled chicken glazed with our house teriyaki sauce",
-    price: "13.99",
-    image: teriyakiChicken,
-    category: "Lunch/Dinner",
-    isPopular: true,
-  },
-  {
-    id: "spicy-poke",
-    name: "Spicy Ahi Poke",
-    description: "Fresh ahi tuna with spicy mayo, green onions, and sesame",
-    price: "17.99",
-    image: spicyPoke,
-    category: "Lunch/Dinner",
-    spicyLevel: 2,
-    dietaryInfo: ["Contains Raw Fish"],
-  },
-  {
-    id: "spam-musubi",
-    name: "Spam Musubi",
-    description: "Grilled Spam and rice wrapped in nori",
-    price: "4.99",
-    image: spamMusubi,
-    category: "Sides",
-    isPopular: true,
-  },
-  {
-    id: "macaroni-salad",
-    name: "Mac Salad",
-    description: "Classic Hawaiian-style macaroni salad",
-    price: "3.99",
-    image: macaroniSalad,
-    category: "Sides",
-    dietaryInfo: ["Vegetarian"],
-  },
-];
-
-const categories = ["Popular", "Breakfast", "Lunch/Dinner", "Sides"];
+import Link from "next/link";
+import { siteConfig } from "@/lib/site";
 
 export function MenuItems() {
-  const [selectedCategory, setSelectedCategory] = useState("Popular");
+  const [selectedCategory, setSelectedCategory] = useState(siteConfig.categories[0].id);
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -139,11 +31,9 @@ export function MenuItems() {
     },
   };
 
-  const filteredItems = menuItems.filter((item) => {
-    if (selectedCategory === "Popular") {
-      return item.isPopular;
-    }
-    return item.category === selectedCategory;
+  // Filter items by selected category
+  const filteredItems = siteConfig.menuItems.filter((item) => {
+    return item.categoryId === selectedCategory;
   });
 
   return (
@@ -177,20 +67,19 @@ export function MenuItems() {
         </motion.div>
 
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category) => (
+          {siteConfig.categories.map((category) => (
             <Button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              variant={selectedCategory === category ? "outline-brand" : "outline"}
+              key={category.id}
+              onClick={() => setSelectedCategory(category.id)}
+              variant={selectedCategory === category.id ? "outline-brand" : "outline"}
               size="lg"
               className="font-medium"
             >
-              {category}
+              {category.name}
             </Button>
           ))}
         </div>
 
-        {/* Menu Items Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -204,27 +93,31 @@ export function MenuItems() {
               variants={itemVariants}
               className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
             >
-              <div className="relative h-52 overflow-hidden">
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  fill
-                  className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                {item.isPopular && (
-                  <div className="absolute top-3 right-3">
-                    <Badge variant="brand" className="font-medium text-sm">
-                      Popular
-                    </Badge>
-                  </div>
-                )}
-              </div>
+              <Link href={`/menu/${item.id}`} className="block">
+                <div className="relative h-52 overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    fill
+                    className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                  {item.isFeatured && (
+                    <div className="absolute top-3 right-3">
+                      <Badge variant="brand" className="font-medium text-sm">
+                        Popular
+                      </Badge>
+                    </div>
+                  )}
+                </div>
+              </Link>
               <div className="p-6">
                 <div className="flex justify-between items-start mb-2 bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-orange-500">
-                  <h3 className="text-xl font-bold">
-                    {item.name}
-                  </h3>
+                  <Link href={`/menu/${item.id}`} className="block">
+                    <h3 className="text-xl font-bold hover:underline">
+                      {item.name}
+                    </h3>
+                  </Link>
                   <span className="text-lg font-bold">
                     ${item.price}
                   </span>

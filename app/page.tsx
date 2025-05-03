@@ -8,6 +8,25 @@ import { ChefQuote } from "./_components/ChefQuote";
 import { Footer } from "../components/footer";
 import Image from "next/image";
 import seamlessBg from "@/public/palm-pattern.jpg";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Got Plate Lunch | Authentic Hawaiian Cuisine | Home",
+  description: "Experience the flavors of Hawaii at Got Plate Lunch. Authentic Hawaiian plate lunches, fresh poke, and island favorites made with the spirit of Aloha.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Got Plate Lunch | Authentic Hawaiian Cuisine | Home",
+    description: "Experience the flavors of Hawaii at Got Plate Lunch. Authentic Hawaiian plate lunches, fresh poke, and island favorites made with the spirit of Aloha.",
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Got Plate Lunch | Authentic Hawaiian Cuisine | Home",
+    description: "Experience the flavors of Hawaii at Got Plate Lunch. Authentic Hawaiian plate lunches, fresh poke, and island favorites made with the spirit of Aloha.",
+  },
+};
 
 export default function HomePage() {
   return (
