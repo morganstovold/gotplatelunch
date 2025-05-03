@@ -39,6 +39,11 @@ export const navItems = [
     href: "/menu",
     target: false,
   },
+  {
+    label: "Gift Cards",
+    href: "/gift-cards",
+    target: false,
+  },
 ];
 
 export function Header() {

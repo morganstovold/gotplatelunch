@@ -154,7 +154,7 @@ export function MenuItems() {
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-12 md:mb-16"
@@ -166,7 +166,7 @@ export function MenuItems() {
             <motion.span
               className="absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-full"
               initial={{ width: "0%" }}
-              whileInView={{ width: "100%" }}
+              animate={{ width: "100%" }}
               transition={{ duration: 1, delay: 0.5 }}
               viewport={{ once: true }}
             />
@@ -180,9 +180,10 @@ export function MenuItems() {
           {categories.map((category) => (
             <Button
               key={category}
-              variant={selectedCategory === category ? "brand" : "soft"}
               onClick={() => setSelectedCategory(category)}
-              className="font-medium text-lg px-8"
+              variant={selectedCategory === category ? "outline-brand" : "outline"}
+              size="lg"
+              className="font-medium"
             >
               {category}
             </Button>
