@@ -13,6 +13,8 @@ export function FoodTruckHero() {
           alt="Hero Background"
           fill
           className="w-full h-full object-cover"
+          priority
+          loading="eager"
         />
         <div className="absolute inset-0 bg-black/60"></div>
       </div>
