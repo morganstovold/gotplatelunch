@@ -8,20 +8,41 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Menu | Got Plate Lunch | Authentic Hawaiian Cuisine",
-  description: "Explore our selection of authentic Hawaiian cuisine made with Aloha. From traditional plate lunches to fresh poke, discover the taste of Hawaii at Got Plate Lunch.",
-  keywords: ["Hawaiian menu", "plate lunch menu", "Hawaiian food", "loco moco", "kalua pork", "spam musubi", "poke", "chicken katsu"],
+  description:
+    "Explore our selection of authentic Hawaiian cuisine made with Aloha. From traditional plate lunches to fresh poke, discover the taste of Hawaii at Got Plate Lunch.",
+  keywords: [
+    "Hawaiian menu",
+    "plate lunch menu",
+    "Hawaiian food",
+    "loco moco",
+    "kalua pork",
+    "spam musubi",
+    "poke",
+    "chicken katsu",
+  ],
   alternates: {
     canonical: "/menu",
   },
   openGraph: {
     title: "Menu | Got Plate Lunch | Authentic Hawaiian Cuisine",
-    description: "Explore our selection of authentic Hawaiian cuisine made with Aloha. From traditional plate lunches to fresh poke, discover the taste of Hawaii at Got Plate Lunch.",
+    description:
+      "Explore our selection of authentic Hawaiian cuisine made with Aloha. From traditional plate lunches to fresh poke, discover the taste of Hawaii at Got Plate Lunch.",
     url: "/menu",
+    images: [
+      {
+        url: "/menu/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Menu - Got Plate Lunch - Authentic Hawaiian Cuisine",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Menu | Got Plate Lunch | Authentic Hawaiian Cuisine",
-    description: "Explore our selection of authentic Hawaiian cuisine made with Aloha. From traditional plate lunches to fresh poke, discover the taste of Hawaii at Got Plate Lunch.",
+    description:
+      "Explore our selection of authentic Hawaiian cuisine made with Aloha. From traditional plate lunches to fresh poke, discover the taste of Hawaii at Got Plate Lunch.",
+    images: ["/menu/opengraph-image"],
   },
 };
 

@@ -2,15 +2,13 @@ import { ImageResponse } from 'next/og';
 import { siteConfig } from '@/lib/site';
 
 
-// Image metadata
 export const size = {
   width: 1200,
   height: 630,
 };
 export const contentType = 'image/png';
 
-// Generate alt text for each menu item
-export async function generateImageMetadata({ params }: { params: { id: string } }) {
+export function generateImageMetadata({ params }: { params: { id: string } }) {
   const id = params.id;
   const menuItem = siteConfig.menuItems.find(item => item.id === id);
   
@@ -20,7 +18,6 @@ export async function generateImageMetadata({ params }: { params: { id: string }
     }];
   }
   
-  // Get category name from categoryId
   const category = siteConfig.categories.find(cat => cat.id === menuItem.categoryId);
   const categoryName = category ? category.name : "";
   
@@ -29,7 +26,6 @@ export async function generateImageMetadata({ params }: { params: { id: string }
   }];
 }
 
-// Image generation
 export default async function Image({ params }: { params: { id: string } }) {
   const id = params.id;
   const menuItem = siteConfig.menuItems.find(item => item.id === id) || {
@@ -85,7 +81,6 @@ export default async function Image({ params }: { params: { id: string } }) {
           }}
         />
 
-        {/* Palm leaves pattern (simplified as shapes) */}
         <div style={{ 
           position: 'absolute', 
           top: 20, 
@@ -134,7 +129,6 @@ export default async function Image({ params }: { params: { id: string } }) {
           ))}
         </div>
 
-        {/* Content container */}
         <div
           style={{
             display: 'flex',
@@ -145,7 +139,6 @@ export default async function Image({ params }: { params: { id: string } }) {
             padding: '40px',
           }}
         >
-          {/* Menu card */}
           <div
             style={{
               display: 'flex',
@@ -158,7 +151,6 @@ export default async function Image({ params }: { params: { id: string } }) {
               height: '400px',
             }}
           >
-            {/* Card header */}
             <div
               style={{
                 background: 'linear-gradient(to right, #f43f5e, #fb923c)',
@@ -171,7 +163,7 @@ export default async function Image({ params }: { params: { id: string } }) {
               <div
                 style={{
                   fontSize: '20px',
-                  fontWeight: 'medium',
+                  fontWeight: '500',
                   marginBottom: '10px',
                 }}
               >
@@ -188,7 +180,6 @@ export default async function Image({ params }: { params: { id: string } }) {
               </h2>
             </div>
             
-            {/* Card body */}
             <div
               style={{
                 padding: '40px',
@@ -233,7 +224,7 @@ export default async function Image({ params }: { params: { id: string } }) {
                     padding: '10px 20px',
                     borderRadius: '9999px',
                     fontSize: '20px',
-                    fontWeight: 'medium',
+                    fontWeight: '500',
                   }}
                 >
                   View Details

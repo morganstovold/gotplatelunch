@@ -24,7 +24,6 @@ export async function generateMetadata({
     };
   }
 
-  // Find the category name from categoryId
   const category = siteConfig.categories.find(cat => cat.id === menuItem.categoryId);
   const categoryName = category ? category.name : "";
 
@@ -46,38 +45,42 @@ export async function generateMetadata({
       description: menuItem.longDescription || menuItem.description,
       url: `/menu/${menuItem.id}`,
       type: "article",
+      images: [
+        {
+          url: `/menu/${menuItem.id}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: `${menuItem.name} - ${categoryName} - Got Plate Lunch`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${menuItem.name} | Got Plate Lunch Menu`,
       description: menuItem.longDescription || menuItem.description,
+      images: [`/menu/${menuItem.id}/opengraph-image`],
     },
   };
 }
 
-// Generate static paths for all menu items
 export async function generateStaticParams() {
   return siteConfig.menuItems.map((item) => ({
     id: item.id,
   }));
 }
 
-// Make the page component async to properly handle dynamic params
 export default async function MenuItemPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  // Now we can safely use id in an async function
   const id = (await params).id;
   const menuItem = siteConfig.menuItems.find((item) => item.id === id);
 
-  // If menu item not found, return 404
   if (!menuItem) {
     notFound();
   }
 
-  // Find the category name from categoryId
   const category = siteConfig.categories.find(cat => cat.id === menuItem.categoryId);
   const categoryName = category ? category.name : "";
 

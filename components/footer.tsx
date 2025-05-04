@@ -112,9 +112,14 @@ export function Footer() {
           <Separator className="my-6 sm:my-8 bg-red-100/30" />
 
           <div className="flex flex-col sm:flex-row justify-between items-center">
-            <p className="text-red-100/90 text-xs sm:text-sm">
-              &copy; {currentYear} Got Plate Lunch. All rights reserved.
-            </p>
+            <div className="flex flex-col sm:items-start">
+              <p className="text-red-100/90 text-xs sm:text-sm">
+                &copy; {currentYear} Got Plate Lunch. All rights reserved.
+              </p>
+              <p className="text-red-100/70 text-xs mt-1">
+                Website by <a href="https://morgannstovold.com" target="_blank" rel="noopener noreferrer" className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400 hover:opacity-80 transition-opacity">Morgan Stovold</a>
+              </p>
+            </div>
             <div className="flex space-x-4 sm:space-x-6 mt-4 sm:mt-0">
               <Link
                 href="/privacy"
