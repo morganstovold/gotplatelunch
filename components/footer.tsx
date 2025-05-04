@@ -75,10 +75,12 @@ export function Footer() {
               </h3>
               <ul className="grid grid-cols-2 sm:grid-cols-1 gap-y-2">
                 <FooterLink href="/">Home</FooterLink>
-                <FooterLink href="/menu">Menu</FooterLink>
-                <FooterLink href="/locations">Locations</FooterLink>
                 <FooterLink href="/about">About Us</FooterLink>
+                <FooterLink href="/food-truck">Food Truck</FooterLink>
                 <FooterLink href="/catering">Catering</FooterLink>
+                <FooterLink href="/locations">Location</FooterLink>
+                <FooterLink href="/menu">Menu</FooterLink>
+                <FooterLink href="/gift-cards">Gift Cards</FooterLink>
               </ul>
             </div>
 
